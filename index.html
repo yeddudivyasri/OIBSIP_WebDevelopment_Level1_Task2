@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yeddu Divya Sri - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <img src="image.jpg" alt="Profile Picture" class="profile-pic">
+      <h2>YEDDU DIVYA SRI</h2>
+      <p>ECE Student</p>
+      <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('about')">About</button>
+        <button onclick="showSection('education')">Education</button>
+        <button onclick="showSection('contact')">Contact</button>
+      </nav>
+    </div>
+
+    <div class="main-content" id="main-content">
+      <!-- Dynamic Content Loads Here -->
+    </div>
+  </div>
+
+  <script>
+    function showSection(section) {
+      const content = document.getElementById('main-content');
+
+      if (section === 'home') {
+        content.innerHTML = `
+          <h1>Welcome to My Profile Portfolio</h1>
+          <p>Hello, I'm Divya Sri, a passionate student on coding. Here you'll find more information about me.</p>
+          <button class="about-btn" onclick="showSection('about')">About Me</button>
+        `;
+      } else if (section === 'about') {
+        content.innerHTML = `
+          <h1>About Me</h1>
+          <p><strong>Name:</strong> Yeddu Divya Sri</p>
+          <p><strong>Email:</strong> divyasri252005@gmail.com</p>
+          <p><strong>Age:</strong> 19</p>
+          <p><strong>Qualification:</strong> B.Tech in ECE</p>
+          <p><strong>College:</strong> Vasireddy Venkatadri Institute of Technology</p>
+          <p><strong>Skills:</strong> C, Python, Java</p>
+        `;
+      } else if (section === 'education') {
+        content.innerHTML = `
+          <h1>Education</h1>
+          <p><strong>Schooling:</strong> Sri Chaitanya School</p>
+          <p><strong>Intermediate:</strong> Sri Chaitanya Co-Education College</p>
+          <p><strong>B.Tech:</strong> Vasireddy Venkatadri Institute of Technology</p>
+        `;
+      } else if (section === 'contact') {
+        content.innerHTML = `
+          <h1>Contact Information</h1>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> divyasri252005@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Vijayawada, Andhra Pradesh</p>
+          </div>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+          </form>
+        `;
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("✅ Message sent successfully!");
+
+      // Clear the form inputs
+      document.getElementById('name').value = "";
+      document.getElementById('email').value = "";
+      document.getElementById('message').value = "";
+    }
+
+    window.onload = () => showSection('home');
+  </script>
+</body>
+</html>
